@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "GenUI Component Scope",
+    "description": "Trim the card component catalog per session to shrink the prompt sent on every request."
+  }
+}

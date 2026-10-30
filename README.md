@@ -1,0 +1,101 @@
+# dsh-genui-scope
+
+给 [DeepSeek Harness](https://github.com/deepseek-ai) 用的插件：按 **全局 / 工作区 / 会话** 三级裁剪 GenUI 卡片系统提示词。
+
+卡片能力由 `dsh-genui` 提供。它把 **46 个组件** 的完整 schema 写死进系统提示词，约 **30,900 字符**，占整个系统提示词的一半左右。但绝大多数会话只需要其中几类——写代码不需要图表，聊天不需要表格。
+
+这个插件让你按层级选择组件，被排除的部分（组件目录、JSON Schema 里的枚举、Schema Snippets 示例）都不会再发给模型。
+
+## 效果
+
+对默认提示词（61,836 字符）实测：
+
+| 方案 | 组件数 | 提示词字符 | 节省 |
+| --- | --- | --- | --- |
+| 不限制 | 46 | 61,836 | — |
+| `lean`（文字+表单+表格） | 34 | 46,097 | 25.5% |
+| `form` | 32 | 39,836 | 35.6% |
+| `chart` | 31 | 39,364 | 36.3% |
+| `table` | 21 | 30,624 | 50.5% |
+| `text` | 18 | 23,116 | 62.6% |
+
+省下的不只是钱——组件 schema 的噪声会让模型挑错组件，裁剪后更容易选对。
+
+## 安装
+
+要求：DeepSeek Harness `0.2.1-rc.5`（其他版本未验证）、`dsh-genui` 已启用。
+
+1. 下载本仓库，或 `git clone https://github.com/SnakeDream/dsh-genui-scope.git`
+2. 在 Harness 里用插件管理器安装这个目录（本地目录安装）
+3. **重启一次 Harness**（host 侧的提示词过滤需要重新加载才会挂上）
+
+首次安装必须重启；之后的规则改动即时生效，不用重启。
+
+## 使用
+
+打开 **设置 → 组件选择**。
+
+- 「全局」对所有工作区生效
+- 「工作区」只对该工作区下的会话生效
+- 「会话」只对该会话生效
+- 优先级：**会话 > 工作区 > 全局 > 不限制**
+
+新建会话时可以先进「新建会话」，挑好组件再创建，规则会随会话一起写进去。
+
+对话中也可以直接让模型改：
+
+```
+这个会话只要表格和图表
+把当前工作区设成 lean
+```
+
+模型会调用 `card_components` 工具。
+
+## 工具
+
+| action | 说明 |
+| --- | --- |
+| `status` | 当前生效的层级与组件 |
+| `catalog` | 全部可用组件 |
+| `list` | 自定义预设 |
+| `use` | 套用预设：`all` / `lean` / `text` / `form` / `table` / `chart` |
+| `set` | 显式指定组件列表 |
+| `clear` | 清除某层规则 |
+
+## 配置
+
+状态默认存在 `$DSH_HOME/genui-scope.json`。插件配置项（都可改）：
+
+| 键 | 默认值 | 说明 |
+| --- | --- | --- |
+| `stateFile` | `genui-scope.json` | 状态文件名 |
+| `logFile` | `genui-scope.log` | 告警日志 |
+| `routePrefix` | `/api/genui-scope` | 设置页用的 HTTP 路由前缀 |
+| `sectionPattern` | `genui` | 要拦截的提示词 section 名匹配 |
+| `force` | `["TinyCard"]` | 永远保留的组件 |
+| `anchors` | 三条中文锚点 | 提示词里组件段落的起始标记 |
+
+## 原理与边界
+
+插件监听 `system-prompt/assemble`，在 `dsh-genui` 注册的那个提示词 section 上做文本裁剪。它不改 `dsh-genui` 本身，也不增加新的事件类型。
+
+这意味着：
+
+- 如果 `dsh-genui` 被关闭，或它的 section 改名，插件就不会有任何效果（设置页照样能选）
+- 如果提示词锚点被上游改掉，插件会静默跳过并在 `genui-scope.log` 里告警一次
+- 官方实践并不建议在 `system-prompt/assemble` 里增删文本；这里这么做是因为 `dsh-genui` 没有提供按会话裁剪的接口
+
+## 适配说明
+
+以下内容与 DSH 版本绑定，升级后可能失效：
+
+- 会话日志格式：`session.v4.jsonl.zstd`（zstd 多帧）、`session/title` 事件、`header.cwd`
+- `$DSH_HOME/storages/workspace.json` 的结构
+- 会话目录名编码（`--C-...--`）
+- client 侧 slot：`settings.section`，以及 `@deepseek-ai/dsh-client-ui-conversation`
+
+同一版本的 Harness 下可用；跨版本不保证。遇到问题先看 `genui-scope.log`。
+
+## License
+
+MIT

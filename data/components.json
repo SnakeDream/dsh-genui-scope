@@ -1,0 +1,278 @@
+[
+  {
+    "component": "a",
+    "name": "提示框",
+    "description": "链接",
+    "category": "basic"
+  },
+  {
+    "component": "h1",
+    "name": "一级标题",
+    "description": "一级标题",
+    "category": "basic"
+  },
+  {
+    "component": "h2",
+    "name": "二级标题",
+    "description": "二级标题",
+    "category": "basic"
+  },
+  {
+    "component": "h3",
+    "name": "三级标题",
+    "description": "三级标题",
+    "category": "basic"
+  },
+  {
+    "component": "h4",
+    "name": "四级标题",
+    "description": "四级标题",
+    "category": "basic"
+  },
+  {
+    "component": "h5",
+    "name": "五级标题",
+    "description": "五级标题",
+    "category": "basic"
+  },
+  {
+    "component": "h6",
+    "name": "六级标题",
+    "description": "六级标题",
+    "category": "basic"
+  },
+  {
+    "component": "p",
+    "name": "段落",
+    "description": "段落",
+    "category": "basic"
+  },
+  {
+    "component": "ol",
+    "name": "有序列表",
+    "description": "有序列表",
+    "category": "basic"
+  },
+  {
+    "component": "ul",
+    "name": "无序列表",
+    "description": "无序列表",
+    "category": "basic"
+  },
+  {
+    "component": "li",
+    "name": "列表项",
+    "description": "列表项",
+    "category": "basic"
+  },
+  {
+    "component": "div",
+    "name": "容器",
+    "description": "容器",
+    "category": "basic"
+  },
+  {
+    "component": "input",
+    "name": "输入框",
+    "description": "输入框",
+    "category": "basic"
+  },
+  {
+    "component": "video",
+    "name": "视频",
+    "description": "视频",
+    "category": "basic"
+  },
+  {
+    "component": "label",
+    "name": "表单标签",
+    "description": "表单标签",
+    "category": "basic"
+  },
+  {
+    "component": "Img",
+    "name": "Img",
+    "description": "图片",
+    "category": "basic"
+  },
+  {
+    "component": "Slot",
+    "name": "Slot",
+    "description": "插槽占位",
+    "category": "basic"
+  },
+  {
+    "component": "Text",
+    "name": "Text",
+    "description": "纯文本",
+    "category": "basic"
+  },
+  {
+    "component": "TinyForm",
+    "name": "表单",
+    "description": "由按钮、输入框、选择器、单选框、多选框等控件组成，用以收集、校验、提交数据",
+    "category": "form"
+  },
+  {
+    "component": "TinyFormItem",
+    "name": "表单项",
+    "description": "由按钮、输入框、选择器、单选框、多选框等控件组成，用以收集、校验、提交数据, 必须放在 TinyForm 中使用， 可以是直接子元素或者间接子元素",
+    "category": "form"
+  },
+  {
+    "component": "TinyButton",
+    "name": "按钮",
+    "description": "常用的操作按钮，提供包括默认按钮、图标按钮、图片按钮、下拉按钮等类型",
+    "category": "control"
+  },
+  {
+    "component": "TinyInput",
+    "name": "输入框",
+    "description": "通过鼠标或键盘输入字符",
+    "category": "form"
+  },
+  {
+    "component": "TinyRadio",
+    "name": "单选",
+    "description": "用于配置不同场景的选项，在一组备选项中进行单选",
+    "category": "form"
+  },
+  {
+    "component": "TinyRadioGroup",
+    "name": "单选按钮组",
+    "description": "用于在一组选项中进行单选。",
+    "category": "form"
+  },
+  {
+    "component": "TinySelect",
+    "name": "下拉框",
+    "description": "Select 选择器是一种通过点击弹出下拉列表展示数据并进行选择的 UI 组件",
+    "category": "form"
+  },
+  {
+    "component": "TinySwitch",
+    "name": "开关",
+    "description": "Switch 在两种状态间切换选择",
+    "category": "form"
+  },
+  {
+    "component": "TinyNumeric",
+    "name": "数字输入框",
+    "description": "通过鼠标或键盘输入字符",
+    "category": "form"
+  },
+  {
+    "component": "TinyCheckbox",
+    "name": "复选框",
+    "description": "用于配置不同场景的选项，提供用户可在一组选项中进行多选",
+    "category": "form"
+  },
+  {
+    "component": "TinyCheckboxButton",
+    "name": "复选按钮",
+    "description": "用于配置不同场景的选项，提供用户可在一组选项中进行多选",
+    "category": "form"
+  },
+  {
+    "component": "TinyCheckboxGroup",
+    "name": "复选按钮组",
+    "description": "用于配置不同场景的选项，提供用户可在一组选项中进行多选",
+    "category": "form"
+  },
+  {
+    "component": "TinyDatePicker",
+    "name": "日期选择",
+    "description": "用于输入或选择日期",
+    "category": "form"
+  },
+  {
+    "component": "TinyGrid",
+    "name": "表格",
+    "description": "提供了非常强大数据表格功能，可以展示数据列表，可以对数据列表进行选择、编辑等",
+    "category": "table"
+  },
+  {
+    "component": "TinyCard",
+    "name": "卡片组件",
+    "description": "强大卡片组件，用于包裹展示内容。",
+    "category": "layout"
+  },
+  {
+    "component": "TinyPager",
+    "name": "分页",
+    "description": "当数据量过多时，使用分页分解数据，常用于 Grid 和 Repeater 组件",
+    "category": "table"
+  },
+  {
+    "component": "TinyHuichartsLine",
+    "name": "折线图",
+    "description": "折线图",
+    "category": "chart"
+  },
+  {
+    "component": "TinyHuichartsHistogram",
+    "name": "柱状图",
+    "description": "柱状图",
+    "category": "chart"
+  },
+  {
+    "component": "TinyHuichartsBar",
+    "name": "条形图",
+    "description": "条形图",
+    "category": "chart"
+  },
+  {
+    "component": "TinyHuichartsRadar",
+    "name": "雷达图",
+    "description": "雷达图",
+    "category": "chart"
+  },
+  {
+    "component": "TinyHuichartsRing",
+    "name": "环形图",
+    "description": "环形图",
+    "category": "chart"
+  },
+  {
+    "component": "TinyHuichartsPie",
+    "name": "圆盘图",
+    "description": "圆盘图",
+    "category": "chart"
+  },
+  {
+    "component": "TinyHuichartsFunnel",
+    "name": "漏斗图",
+    "description": "漏斗图",
+    "category": "chart"
+  },
+  {
+    "component": "TinyHuichartsScatter",
+    "name": "散点图",
+    "description": "散点图",
+    "category": "chart"
+  },
+  {
+    "component": "TinyHuichartsWaterfall",
+    "name": "瀑布图",
+    "description": "瀑布图",
+    "category": "chart"
+  },
+  {
+    "component": "TinyHuichartsGauge",
+    "name": "仪表盘",
+    "description": "仪表盘",
+    "category": "chart"
+  },
+  {
+    "component": "TinyHuichartsGraph",
+    "name": "拓扑图",
+    "description": "拓扑图",
+    "category": "chart"
+  },
+  {
+    "component": "TinyHuichartsProcess",
+    "name": "进度图",
+    "description": "进度图",
+    "category": "chart"
+  }
+]

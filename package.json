@@ -1,0 +1,63 @@
+{
+  "name": "dsh-genui-scope",
+  "version": "1.6.0",
+  "private": false,
+  "description": "按全局 / 工作区 / 会话三级裁剪 DeepSeek Harness 的 GenUI 卡片系统提示词，减少每轮上下文占用与组件误导。",
+  "license": "MIT",
+  "type": "module",
+  "author": "SnakeDream",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "data/components.json",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "deepseek",
+    "dsh",
+    "dsh-plugin",
+    "genui",
+    "cards",
+    "system-prompt",
+    "context",
+    "tokens"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SnakeDream/dsh-genui-scope.git"
+  },
+  "homepage": "https://github.com/SnakeDream/dsh-genui-scope",
+  "bugs": {
+    "url": "https://github.com/SnakeDream/dsh-genui-scope/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}

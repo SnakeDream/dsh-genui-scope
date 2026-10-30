@@ -20,6 +20,8 @@
     "data/components.json",
     "locale/*.json",
     "icon.svg",
+    "screenshots.json",
+    "assets/*.png",
     "README.md",
     "LICENSE"
   ],
